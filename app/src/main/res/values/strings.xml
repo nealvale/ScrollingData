@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">ScrollingData</string>
+    <string name="app_name">Git Repos List</string>
+    <string name="dialog_title_error">Error</string>
+    <string name="dialog_button_ok">OK</string>
+    <string name="item_repo_avatar_desc">Repo owner avatar</string>
+    <string name="login">Login</string>
+    <string name="image_profile_login_desc">Profile</string>
+    <string name="input_profile_login_username_hint">GitHub Username</string>
+    <string name="input_profile_login_token_hint">Personal Access Token</string>
+    <string name="button_profile_login_what">What is my Personal Access Token?</string>
+
+
+    <string name="button_profile_login">Login to GitHub</string>
+    <string name="title_gist_menu_star">STar</string>
 </resources>
