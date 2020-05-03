@@ -8,8 +8,7 @@
     android:background="#FFFFFF"
     android:clickable="true"
     android:focusable="true"
-    android:onClick="sendMessage">
-
+    android:scrollbars="vertical">
 
     <ImageView
         android:id="@+id/image_repo_user_avatar"

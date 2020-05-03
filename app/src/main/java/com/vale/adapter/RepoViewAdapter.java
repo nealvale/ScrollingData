@@ -19,10 +19,12 @@ public class RepoViewAdapter extends RecyclerView.Adapter<RepoViewHolder> {
     Activity context;
     private ArrayList<GitRepo> listofGitRepos;
     private Activity ctx;
+    private IViewHolderOnclickListener listener;
 
-    public RepoViewAdapter(Activity context, ArrayList<GitRepo> gitRepos) {
+    public RepoViewAdapter(Activity context, ArrayList<GitRepo> gitRepos, IViewHolderOnclickListener  onclickListener) {
         listofGitRepos = gitRepos;
         ctx = context;
+        listener= onclickListener;
     }
 
     @NonNull
@@ -40,8 +42,10 @@ public class RepoViewAdapter extends RecyclerView.Adapter<RepoViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull RepoViewHolder holder, int position) {
+        Log.d(TAG, "onBindViewHolder: "+holder.getItemId()+" position: "+position);
         GitRepo gitRepo = listofGitRepos.get(position);
         RepoViewHolder repoViewHolder = holder;
+        repoViewHolder.b
         repoViewHolder.bindDataToView(gitRepo);
     }
 
