@@ -4,6 +4,7 @@
     <string name="dialog_button_ok">OK</string>
     <string name="item_repo_avatar_desc">Repo owner avatar</string>
     <string name="login">Login</string>
+    <string name="detail_name">Name</string>
     <string name="image_profile_login_desc">Profile</string>
     <string name="input_profile_login_username_hint">GitHub Username</string>
     <string name="input_profile_login_token_hint">Personal Access Token</string>

@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 
 import android.text.Layout;
@@ -18,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.vale.adapter.IViewHolderOnclickListener;
 import com.vale.adapter.RepoViewAdapter;
 import com.vale.model.GitRepo;
 import com.vale.viewmodel.GistViewModel;
@@ -34,13 +36,25 @@ public class MainActivity extends AppCompatActivity implements LifecycleOwner {
     private RecyclerView.LayoutManager layoutManager;
     private GistViewModel viewModel;
     private MainActivity context;
+    private IViewHolderOnclickListener onclickListener;
     public static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
 
     private Observer<ArrayList<GitRepo>> gitRepoUpdateObserver = new Observer<ArrayList<GitRepo>>() {
         @Override
-        public void onChanged(ArrayList<GitRepo> gitRepos) {
+        public void onChanged(final ArrayList<GitRepo> gitRepos) {
             Log.d(TAG, "gitRepoUpdateObserver.onChanged: ");
-            adapter = new RepoViewAdapter(context, gitRepos);
+            adapter = new RepoViewAdapter(context, gitRepos, new IViewHolderOnclickListener() {
+                @Override
+                public void onItemClick(View view, int position) {
+                    Log.d(TAG, "gitRepoUpdateObserver.onItemClick: " + position);
+                    Intent intent = new Intent(MainActivity.this, DisplayRepoDetailsActivity.class);
+                    String message = "Selected repo";
+
+                    intent.putExtra(Intent.EXTRA_TEXT, message).putExtra("details", gitRepos.get(position).getOwner());
+                    startActivity(intent);
+
+                }
+            });
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.setAdapter(adapter);
         }
@@ -80,19 +94,7 @@ public class MainActivity extends AppCompatActivity implements LifecycleOwner {
                 startActivityForResult(intent, LOGIN_ACTIVITY_REQUEST_CODE);
             }
         });
+
     }
-
-
-
-    /*    *//** Called when the user clicks on a row
-     * @return*/
-    public void showDetails(View view) {
-
-                Intent intent = new Intent(MainActivity.this, DisplayRepoDetailsActivity.class);
-                TextView repo_id = (TextView) findViewById(view.getId());
-                String message = repo_id.getText().toString();
-                intent.putExtra(Intent.EXTRA_TEXT, message);
-                startActivity(intent);
-            }
 
 }

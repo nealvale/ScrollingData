@@ -32,12 +32,15 @@ public class RepoViewAdapter extends RecyclerView.Adapter<RepoViewHolder> {
     public RepoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(viewType, parent, false);
-        switch (viewType) {
-            case R.layout.gitrepo_item:
-                return new RepoViewHolder(view);
-            default:
-                return null;
-        }
+        final RepoViewHolder viewHolder = new RepoViewHolder(view);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClick(v, viewHolder.getAdapterPosition());
+            }
+        });
+        return viewHolder;
+
     }
 
     @Override
@@ -45,8 +48,7 @@ public class RepoViewAdapter extends RecyclerView.Adapter<RepoViewHolder> {
         Log.d(TAG, "onBindViewHolder: "+holder.getItemId()+" position: "+position);
         GitRepo gitRepo = listofGitRepos.get(position);
         RepoViewHolder repoViewHolder = holder;
-        repoViewHolder.b
-        repoViewHolder.bindDataToView(gitRepo);
+        repoViewHolder.bindDataToView(gitRepo, null);
     }
 
 

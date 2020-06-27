@@ -39,6 +39,7 @@ public class GistViewModel extends ViewModel {
     }
 
     private void init() {
+        Log.d(TAG, "init: ");
         gitRepoLiveData = new MutableLiveData<>();
 
         retrofit = NetworkUtils.setApiCall("tets", "pwd");

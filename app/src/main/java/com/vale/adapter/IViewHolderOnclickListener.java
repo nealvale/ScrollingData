@@ -1,7 +1,7 @@
 package com.vale.adapter;
 
-import android.content.Context;
+import android.view.View;
 
 public interface IViewHolderOnclickListener {
-    public void onClickListener(Context context);
+    public void onItemClick(View view, int position);
 }

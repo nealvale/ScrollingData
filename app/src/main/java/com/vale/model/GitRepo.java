@@ -2,9 +2,10 @@ package com.vale.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class GitRepo {
+public class GitRepo implements Serializable {
 
     /*
     Modified sample data from: https://developer.github.com/v3/users/#get-the-authenticated-user

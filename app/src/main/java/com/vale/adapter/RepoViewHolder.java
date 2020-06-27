@@ -49,7 +49,9 @@ public class RepoViewHolder extends RecyclerView.ViewHolder implements  View.OnC
 
     }
 
-    public void bindOnclickListener()
+    public void bindOnclickListener() {
+
+    }
     @Override
     public void onClick(View v) {
         int adapterPosition=getAdapterPosition();
